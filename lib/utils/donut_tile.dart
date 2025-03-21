@@ -6,6 +6,7 @@ class DonutTile extends StatelessWidget {
  final String donutPrice;
  final dynamic donutColor;  //dynamic porque será de tipo Color y también usará []
  final String imageName;
+ final VoidCallback onTap;
  
  const DonutTile({
    super.key,
@@ -14,6 +15,7 @@ class DonutTile extends StatelessWidget {
    required this.donutPrice,
    required this.donutColor,
    required this.imageName,
+   required this.onTap,
  });
                  
  @override
@@ -66,8 +68,15 @@ class DonutTile extends StatelessWidget {
              child: Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween, //Alineación
                children: [
-                 Icon(Icons.favorite_border),
-                 Icon(Icons.add),
+                 Icon(Icons.favorite_border, color: Colors.pink[400],),
+                 GestureDetector(
+                    onTap: onTap,
+                    child: 
+                  Text( 
+                    "add",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, decoration: TextDecoration.underline,)
+                    ),
+                 ),
                ],
              ),
            )
